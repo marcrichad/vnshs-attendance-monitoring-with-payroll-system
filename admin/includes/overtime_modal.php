@@ -1,3 +1,4 @@
+<?php include_once "session.php"; ?>
 <!-- Add -->
 <div class="modal fade" id="addnew">
     <div class="modal-dialog">
@@ -12,8 +13,18 @@
           		  <div class="form-group">
                   	<label for="employee" class="col-sm-3 control-label">Employee ID</label>
 
-                  	<div class="col-sm-9">
+                  	<!-- <div class="col-sm-9">
                     	<input type="text" class="form-control" id="employee" name="employee" required>
+                  	</div> -->
+					  <div class="col-sm-9">
+                    	<?php $query =mysqli_query($conn, "SELECT employee_id, CONCAT(lastname,', ', firstname) as name FROM employees");
+						echo '<select class="form-control" id="employee" name="employee" required>';
+						while($row=mysqli_fetch_array($query)) {
+							echo "<option value='".$row['employee_id']."'>".$row['name']."</option>";
+						}
+						echo "</select>";
+						?>
+
                   	</div>
                 </div>
                 <div class="form-group">
