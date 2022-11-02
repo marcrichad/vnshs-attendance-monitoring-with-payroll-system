@@ -93,6 +93,7 @@
     
   <?php include 'includes/footer.php'; ?>
   <?php include 'includes/employee_modal.php'; ?>
+  <?php //include 'includes/employee_details.php'; ?>
 </div>
 <?php include 'includes/scripts.php'; ?>
 <script>
@@ -119,7 +120,7 @@ $(function(){
   
   $('.view').click(function(e){
     e.preventDefault();
-    $('#view').modal('show');
+    $('#view_employee_details').modal('show');
     var id = $(this).data('id');
     getRow(id);
   });
@@ -145,6 +146,15 @@ function getRow(id){
       $('#gender_val').val(response.gender).html(response.gender);
       $('#position_val').val(response.position_id).html(response.description);
       $('#schedule_val').val(response.schedule_id).html(response.time_in+' - '+response.time_out);
+
+      $('#view_firstname').val(response.firstname);
+      $('#view_lastname').val(response.lastname);
+      $('#view_address').val(response.address);
+      $('#datepicker_view').val(response.birthdate);
+      $('#view_contact').val(response.contact_info);
+      $('#view_gender').val(response.gender).html(response.gender);
+      $('#view_position').val(response.position_id).html(response.description);
+      $('#view_schedule').val(response.schedule_id).html(response.time_in+' - '+response.time_out);
     }
   });
 }

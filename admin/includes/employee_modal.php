@@ -27,7 +27,7 @@
                   	<label for="address" class="col-sm-3 control-label">Address</label>
 
                   	<div class="col-sm-9">
-                      <textarea class="form-control" name="address" id="address"></textarea>
+                      <textarea class="form-control" name="address" id="address" style="resize: vertical"></textarea>
                   	</div>
                 </div>
                 <div class="form-group">
@@ -160,7 +160,7 @@
                     <label for="edit_address" class="col-sm-3 control-label">Address</label>
 
                     <div class="col-sm-9">
-                      <textarea class="form-control" name="address" id="edit_address"></textarea>
+                      <textarea class="form-control" name="address" id="edit_address" style="resize: vertical"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
@@ -307,4 +307,71 @@
             </div>
         </div>
     </div>
-</div>    
+</div>  
+
+<!-- View Details -->
+<div class="modal fade" id="view_employee_details">
+    <div class="modal-dialog">
+        <div class="modal-content">
+          	<div class="modal-header">
+            	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              		<span aria-hidden="true">&times;</span></button>
+            	<h4 class="modal-title"><b><span class="employee_id"></span></b></h4>
+          	</div>
+          	<div class="modal-body">
+            	<form class="form-horizontal">
+            		<input type="hidden" class="empid" name="id">
+                <div class="form-group">
+                    <label for="view_firstname" class="col-sm-3 control-label">Firstname</label>
+
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="view_firstname" name="firstname" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="view_lastname" class="col-sm-3 control-label">Lastname</label>
+
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="view_lastname" name="lastname" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="view_address" class="col-sm-3 control-label">Address</label>
+
+                    <div class="col-sm-9">
+                      <textarea class="form-control" name="address" id="view_address" style="resize: none" disabled></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="datepicker_view" class="col-sm-3 control-label">Birthdate</label>
+
+                    <div class="col-sm-9"> 
+                      <div class="date">
+                        <input type="text" class="form-control" id="datepicker_view" name="birthdate" disabled>
+                      </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="view_contact" class="col-sm-3 control-label">Contact Info</label>
+
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="view_contact" name="contact" disabled>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="view_gender" class="col-sm-3 control-label">Gender</label>
+
+                    <div class="col-sm-9"> 
+                      <input type="text" class="form-control" id="view_gender" name="contact" disabled>
+                    </div>
+                </div>
+                
+          	</div>
+          	<div class="modal-footer">
+            	<button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+            	</form>
+          	</div>
+        </div>
+    </div>
+</div>
