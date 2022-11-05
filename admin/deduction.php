@@ -11,7 +11,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Deductions
+        Memorandum
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -51,8 +51,9 @@
             <div class="box-body">
               <table id="example1" class="table table-bordered">
                 <thead>
-                  <th>Description</th>
-                  <th>Amount</th>
+                  <th>Employee Name</th>
+                  <th>Number of Late</th>
+                  <th>Number of Absences</th>
                   <th>Tools</th>
                 </thead>
                 <tbody>
