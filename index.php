@@ -12,12 +12,12 @@
     	<h4 class="login-box-msg">Enter Employee ID</h4>
 
     	<form id="attendance">
-          <div class="form-group">
+          <!-- <div class="form-group">
             <select class="form-control" name="status">
               <option value="in">Time In</option>
               <option value="out">Time Out</option>
             </select>
-          </div>
+          </div> -->
       		<div class="form-group has-feedback">
         		<input type="text" class="form-control input-lg" id="employee" name="employee" required>
         		<span class="glyphicon glyphicon-calendar form-control-feedback"></span>
