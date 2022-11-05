@@ -92,6 +92,14 @@
                       $cashadvance = $carow['cashamount'];
 
                       $gross = $row['rate'] * $row['total_hr'];
+                      
+
+                      //deduction computation
+                      $pagibig = ($gross < 1500 ? $gross * .01 : ($gross < 5000 ? $gross * .01 : 5000*0.02));
+                      $philhealth = ($gross < 10000 ? 200 : ($gross < 80000 ? $gross * .04 : 3200/2));
+                      $gsis = $gross*.09;
+                      $deduction = $pagibig + $philhealth + $gsis;
+
                       $total_deduction = $deduction + $cashadvance;
                       $net = $gross - $total_deduction;
 
