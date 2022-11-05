@@ -15,7 +15,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Deductions</li>
+        <li class="active">Memorandum</li>
       </ol>
     </section>
     <!-- Main content -->
@@ -65,6 +65,7 @@
                         <tr>
                           <td>".$row['description']."</td>
                           <td>".number_format($row['amount'], 2)."</td>
+                          <td>
                           <td>
                             <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
                             <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
