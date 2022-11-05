@@ -78,5 +78,5 @@ $(function() {
 </body>
 <html>
 <body style="background: url(VNHSBG1.jpg ); background-size: 100%"></body>
-<center><a href="scanner.php">CLICK TO SCAN ATTEDANCE</a><br><br></center>
+<!-- <center><a href="scanner.php">CLICK TO SCAN ATTEDANCE</a><br><br></center> -->
 </html>
