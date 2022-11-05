@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2020 at 07:41 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.2.30
+-- Generation Time: Nov 05, 2022 at 09:41 AM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 7.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -42,7 +42,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`, `firstname`, `lastname`, `photo`, `created_on`) VALUES
-(1, 'serbermz', '$2y$10$U4/qPW2j25anqXV55md94uA07ZZ/lECSQPvaDYalJIX9Oxj7H4INy', 'Lyndon', 'Bermoy', 'profile youtube.jpg', '2018-04-30');
+(1, 'VnhsAdmin', '$2y$10$U4/qPW2j25anqXV55md94uA07ZZ/lECSQPvaDYalJIX9Oxj7H4INy', 'Vinisitahan', 'Highschool', 'download.jpg', '2022-06-23');
 
 -- --------------------------------------------------------
 
@@ -56,7 +56,7 @@ CREATE TABLE `attendance` (
   `date` date NOT NULL,
   `time_in` time NOT NULL,
   `status` int(1) NOT NULL,
-  `time_out` time NOT NULL,
+  `time_out` time DEFAULT NULL,
   `num_hr` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -65,7 +65,14 @@ CREATE TABLE `attendance` (
 --
 
 INSERT INTO `attendance` (`id`, `employee_id`, `date`, `time_in`, `status`, `time_out`, `num_hr`) VALUES
-(87, 1, '2020-05-08', '01:40:51', 1, '00:00:00', 0);
+(98, 11, '2022-10-26', '11:39:55', 0, '11:40:01', 0),
+(99, 11, '2022-11-03', '09:23:39', 0, '09:25:31', 0.016666666666667),
+(100, 13, '2022-11-03', '16:46:35', 0, '16:46:50', 0),
+(101, 10, '2022-11-03', '16:53:15', 0, '16:53:23', 0),
+(102, 13, '2022-11-05', '07:31:02', 1, '00:00:00', 0),
+(103, 10, '2022-11-05', '07:31:18', 0, '07:38:01', 0.1),
+(104, 11, '2022-11-05', '07:31:57', 0, NULL, 0),
+(105, 9, '2022-11-05', '15:14:29', 0, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -85,8 +92,7 @@ CREATE TABLE `cashadvance` (
 --
 
 INSERT INTO `cashadvance` (`id`, `date_advance`, `employee_id`, `amount`) VALUES
-(2, '2018-05-02', '1', 1000),
-(3, '2018-05-02', '1', 1000);
+(5, '2022-11-03', '11', 2000);
 
 -- --------------------------------------------------------
 
@@ -105,9 +111,9 @@ CREATE TABLE `deductions` (
 --
 
 INSERT INTO `deductions` (`id`, `description`, `amount`) VALUES
-(1, 'SSS', 100),
-(2, 'Pagibig', 150),
-(3, 'PhilHealth', 150);
+(1, 'Pag Ibig', 150),
+(3, 'PhilHealth', 150),
+(5, 'GSIS', 150);
 
 -- --------------------------------------------------------
 
@@ -135,8 +141,12 @@ CREATE TABLE `employees` (
 --
 
 INSERT INTO `employees` (`id`, `employee_id`, `firstname`, `lastname`, `address`, `birthdate`, `contact_info`, `gender`, `position_id`, `schedule_id`, `photo`, `created_on`) VALUES
-(1, 'ABC123456789', 'Lyndon', 'Bermoy', 'Surigao City', '2018-04-02', '09079373999', 'Male', 1, 2, 'profile youtube1.jpg', '2018-04-28'),
-(3, 'DYE473869250', 'Jonah', 'Juarez', 'Surigao City', '1992-05-02', '09123456789', 'Female', 2, 2, 'log.jpg', '2018-04-30');
+(8, 'INR096827314', 'MARC', 'BARCELO', 'bacacay', '2022-10-19', '1234567890', 'Male', 2, 1, '74184496_2358625337593118_8649905628375941120_n.jpg', '2022-10-11'),
+(9, 'TYI804571932', 'Marc ', 'Okay', 'bacacy', '2022-10-25', '907383574', 'Male', 2, 1, '74184496_2358625337593118_8649905628375941120_n.jpg', '2022-10-14'),
+(10, 'KHT604279813', 'Okay', 'Sdsnjsjcsc', 'sadscc', '2022-10-18', '907383574', 'Male', 2, 1, '', '2022-10-25'),
+(11, 'HLV520834769', 'OKAY', 'KKKK', 'dsdsjajshsdjs', '2022-10-05', 'saddsda', 'Male', 2, 1, '', '2022-10-25'),
+(13, 'ILP068291754', 'TEST TEST', 'OKAY', 'dsdsds', '2022-10-10', 'xsxsxs', 'Male', 3, 3, '', '2022-10-25'),
+(14, 'TSG054268973', 'Sasa', 'Xzxzxz', ' xcxxcxc', '2022-10-24', '09875678666', 'Female', 2, 3, '', '2022-10-27');
 
 -- --------------------------------------------------------
 
@@ -151,6 +161,26 @@ CREATE TABLE `overtime` (
   `rate` double NOT NULL,
   `date_overtime` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `overtime`
+--
+
+INSERT INTO `overtime` (`id`, `employee_id`, `hours`, `rate`, `date_overtime`) VALUES
+(7, '8', 5, 20, '2022-11-03');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payroll`
+--
+
+CREATE TABLE `payroll` (
+  `employee_id` int(11) NOT NULL,
+  `deductions` int(11) NOT NULL,
+  `base_pay` int(11) NOT NULL,
+  `net_pay` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -169,8 +199,9 @@ CREATE TABLE `position` (
 --
 
 INSERT INTO `position` (`id`, `description`, `rate`) VALUES
-(1, 'Programmer', 100),
-(2, 'Writer', 50);
+(1, 'Teacher 1', 30),
+(2, 'Teacher 2', 40),
+(3, 'SHS Teacher ', 50);
 
 -- --------------------------------------------------------
 
@@ -189,7 +220,7 @@ CREATE TABLE `schedules` (
 --
 
 INSERT INTO `schedules` (`id`, `time_in`, `time_out`) VALUES
-(1, '07:00:00', '16:00:00'),
+(1, '07:30:00', '17:00:00'),
 (2, '08:00:00', '17:00:00'),
 (3, '09:00:00', '18:00:00'),
 (4, '10:00:00', '19:00:00');
@@ -260,43 +291,43 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 
 --
 -- AUTO_INCREMENT for table `cashadvance`
 --
 ALTER TABLE `cashadvance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `deductions`
 --
 ALTER TABLE `deductions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `overtime`
 --
 ALTER TABLE `overtime`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `position`
 --
 ALTER TABLE `position`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `schedules`
 --
 ALTER TABLE `schedules`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
