@@ -320,10 +320,14 @@
           	</div>
           	<div class="modal-body">
             	<form class="form-horizontal">
+              <div class="form-group">
+                    <div class="col-sm-9">
+                <center><img id="view_image" style="width: 150px; height: 150px;"></center>
+                    </div>
+              </div>
             		<input type="hidden" class="empid" name="id">
                 <div class="form-group">
                     <label for="view_firstname" class="col-sm-3 control-label">Firstname</label>
-
                     <div class="col-sm-9">
                       <input type="text" class="form-control" id="view_firstname" name="firstname" disabled>
                     </div>

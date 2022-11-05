@@ -155,6 +155,9 @@ function getRow(id){
       $('#view_gender').val(response.gender).html(response.gender);
       $('#view_position').val(response.position_id).html(response.description);
       $('#view_schedule').val(response.schedule_id).html(response.time_in+' - '+response.time_out);
+      var photo = response.photo === "" ? '../images/profile.jpg' : '../images/'+ response.photo;
+      // console.log("pic", photo);
+      $('#view_image').attr('src', photo);
     }
   });
 }
