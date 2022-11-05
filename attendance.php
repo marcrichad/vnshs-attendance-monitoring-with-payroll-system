@@ -6,7 +6,20 @@
 		include 'timezone.php';
 
 		$employee = $_POST['employee'];
-		$status = $_POST['status'];
+		// $status = $_POST['status'];
+		$status;
+
+		$sql = "SELECT *, attendance.id AS uid FROM attendance LEFT JOIN employees ON employees.id=attendance.employee_id WHERE attendance.employee_id = '$id' AND date = '$date_now'";
+				$query = $conn->query($sql);
+				if($query->num_rows < 1){
+					$status = 'in';
+					return $status;
+				} else {
+					$status = 'out';
+					return $status;
+				}
+
+
 
 		$sql = "SELECT * FROM employees WHERE employee_id = '$employee'";
 		$query = $conn->query($sql);
