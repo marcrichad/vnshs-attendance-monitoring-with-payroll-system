@@ -7,17 +7,7 @@
 
 		$employee = $_POST['employee'];
 		// $status = $_POST['status'];
-		$status;
-
-		$sql1 = "SELECT *, attendance.id AS uid FROM attendance LEFT JOIN employees ON employees.id=attendance.employee_id WHERE attendance.employee_id = '$id' AND date = '$date_now'";
-				$query = $conn->query($sql1);
-				if($query->num_rows < 1){
-					$status = 'in';
-					return $status;
-				} else {
-					$status = 'out';
-					return $status;
-				}
+		
 
 
 
@@ -29,6 +19,18 @@
 			$id = $row['id'];
 
 			$date_now = date('Y-m-d');
+
+			$status;
+
+		$sql1 = "SELECT *, attendance.id AS uid FROM attendance LEFT JOIN employees ON employees.id=attendance.employee_id WHERE attendance.employee_id = '$id' AND date = '$date_now'";
+				$query = $conn->query($sql1);
+				if($query->num_rows < 1){
+					$status = 'in';
+					return $status;
+				} else {
+					$status = 'out';
+					return $status;
+				}
 
 			if($status == 'in'){
 				$sql = "SELECT * FROM attendance WHERE employee_id = '$id' AND date = '$date_now' AND time_in IS NOT NULL";
