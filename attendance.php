@@ -35,7 +35,7 @@
 					$sql = "SELECT * FROM schedules WHERE id = '$sched'";
 					$squery = $conn->query($sql);
 					$srow = $squery->fetch_assoc();
-					$logstatus = ($lognow > $srow['time_in']) ? 0 : 1;
+					$logstatus = ($lognow > $srow['time_in']) ? 1 : 0;
 					//
 					$sql = "INSERT INTO attendance (employee_id, date, time_in, status) VALUES ('$id', '$date_now', NOW(), '$logstatus')";
 					if($conn->query($sql)){
