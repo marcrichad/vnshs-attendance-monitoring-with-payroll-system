@@ -85,18 +85,24 @@
 								$time_out = $srow['time_out'];
 							}
 
-							$time_in = new DateTime($time_in);
-							$time_out = new DateTime($time_out);
-							$interval = $time_in->diff($time_out);
-							$hrs = $interval->format('%h');
-							$mins = $interval->format('%i');
-							$mins = $mins/60;
-							$int = $hrs + $mins;
-							if($int > 4){
-								$int = $int - 1;
-							}
+							// $time_in = new DateTime($time_in);
+							// $time_out = new DateTime($time_out);
+							// $interval = $time_in->diff($time_out);
+							// $hrs = $interval->format('%h');
+							// $mins = $interval->format('%i');
+							// $mins = $mins/60;
+							// $int = $hrs + $mins;
+							// if($int > 4){
+							// 	$int = $int - 1;
+							// }
 
-							$sql = "UPDATE attendance SET num_hr = '$int' WHERE id = '".$row['uid']."'";
+							$time_in = strtotime($time_in);
+							$time_out = strtotime($time_out);
+							$diff = $time_out - $time_in;
+							$diff_time = date('H:i:s', $diff);
+
+							// $sql = "UPDATE attendance SET num_hr = '$int' WHERE id = '".$row['uid']."'";
+							$sql = "UPDATE attendance SET num_hr = '$diff_time' WHERE id = '".$row['uid']."'";
 							$conn->query($sql);
 						}
 						else{
