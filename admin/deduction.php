@@ -58,21 +58,43 @@
                 </thead>
                 <tbody>
                   <?php
-                    $sql = "SELECT * FROM deductions";
+                    // $sql = "SELECT * FROM deductions";
+                    // $query = $conn->query($sql);
+                    // while($row = $query->fetch_assoc()){
+                    //   echo "
+                    //     <tr>
+                    //       <td>".$row['description']."</td>
+                    //       <td>".number_format($row['amount'], 2)."</td>
+                    //       <td>
+                    //       <td>
+                    //         <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
+                    //         <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
+                    //       </td>
+                    //     </tr>
+                    //   ";
+                    // }
+
+                    $sql = "SELECT * FROM employees";
                     $query = $conn->query($sql);
-                    while($row = $query->fetch_assoc()){
+                    while($row = $query->fetch_assoc()) {
+                      $id = $row['id'];
+                      $fullname = $row['firstname']. ' '.$row['lastname'];
+
+                      $sql_late = "SELECT COUNT(status) FROM attendance where employee_id='$id' AND status = '1'";
+                      $query_late = $conn->query($sql_late);
+                      $row_late = $query_late->fetch_assoc();
+                      $late_count = $row_late['COUNT(status)'];
+
                       echo "
-                        <tr>
-                          <td>".$row['description']."</td>
-                          <td>".number_format($row['amount'], 2)."</td>
-                          <td>
-                          <td>
-                            <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
-                            <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
-                          </td>
-                        </tr>
-                      ";
+                      <tr>
+                        <td>$fullname</td>
+                        <td>$late_count</td>
+                        <td></td>
+                        <td></td>
+                      </tr>";
                     }
+
+
                   ?>
                 </tbody>
               </table>
