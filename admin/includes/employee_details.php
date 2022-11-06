@@ -1,4 +1,3 @@
-<!-- Add -->
 <div class="modal fade" id="view_employee_details">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -16,7 +15,7 @@
 
 						while($row=mysqli_fetch_array($query)) {
 				?>
-          		  
+
               <div class="form-group">
                   	<label for="firstname" class="col-sm-3 control-label">Firstname</label>
                   	<div class="col-sm-9">
@@ -55,7 +54,7 @@
                     <?php echo $row['contact_info'];?>
                     </div>
                 </div>
-              
+
                 <div class="form-group">
                     <label for="deductions" class="col-sm-3 control-label">Deductions</label>
 
@@ -63,7 +62,7 @@
                     <?php echo $row['deductions'];?>
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="gender" class="col-sm-3 control-label">Gender</label>
 
@@ -87,7 +86,7 @@
                     ?>
                     </div>
                 </div>
-                
+
           	  </div>
           	<div class="modal-footer">
             	<button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
