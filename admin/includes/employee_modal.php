@@ -46,25 +46,6 @@
                       <input type="text" class="form-control" id="contact" name="contact">
                     </div>
                 </div>
-              
-                <div class="form-group">
-                    <label for="deductions" class="col-sm-3 control-label">Deductions</label>
-
-                    <div class="col-sm-9">
-                      <select class="form-control" name="deductions" id="deductions" required>
-                        <option value="" selected>- Select -</option>
-                        <?php
-                          $sql = "SELECT * FROM deductions";
-                          $query = $conn->query($sql);
-                          while($prow = $query->fetch_assoc()){
-                            echo "
-                              <option value='".$prow['id']."'>".$prow['description']."</option>
-                            ";
-                          }
-                        ?>
-                      </select>
-                    </div>
-                </div>
                 
                 <div class="form-group">
                     <label for="gender" class="col-sm-3 control-label">Gender</label>
@@ -177,24 +158,6 @@
 
                     <div class="col-sm-9">
                       <input type="text" class="form-control" id="edit_contact" name="contact">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="deductions" class="col-sm-3 control-label">Deductions</label>
-
-                    <div class="col-sm-9">
-                      <select class="form-control" name="deductions" id="deductions" required>
-                        <option value="" selected>- Select -</option>
-                        <?php
-                          $sql = "SELECT * FROM deductions";
-                          $query = $conn->query($sql);
-                          while($prow = $query->fetch_assoc()){
-                            echo "
-                              <option value='".$prow['id']."'>".$prow['description']."</option>
-                            ";
-                          }
-                        ?>
-                      </select>
                     </div>
                 </div>
                 <div class="form-group">
