@@ -85,13 +85,23 @@
                       $row_late = $query_late->fetch_assoc();
                       $late_count = $row_late['COUNT(status)'];
 
+                      $sql_absent = "SELECT COUNT(status) FROM attendance where employee_id='$id' AND status = '2'";
+                      $query_absent = $conn->query($sql_absent);
+                      $row_absent = $query_absent->fetch_assoc();
+                      $absent_count = $row_absent['COUNT(status)'];
+
                       echo "
                       <tr>
                         <td>$fullname</td>
                         <td>$late_count</td>
-                        <td></td>
-                        <td></td>
-                      </tr>";
+                        <td>$absent_count</td>
+                        ";
+                      if ($late_count > 2 || $absent_count >2) {
+                        echo "<td><button class='btn btn-success btn-sm btn-flat'><i class='fa fa-paper-plane'></i> Send Memo</button>
+                        </tr>";
+                      } else {
+                        echo "<td></td> </tr>";
+                      }
                     }
 
 
